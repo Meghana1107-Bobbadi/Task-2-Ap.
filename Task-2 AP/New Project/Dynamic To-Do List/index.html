@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="todo-container">
+    <h2>My To-Do List</h2>
+    <input type="text" id="todoInput" placeholder="Add a new task">
+    <button onclick="addTask()">Add</button>
+    <ul id="todoList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      const input = document.getElementById("todoInput");
+      const task = input.value.trim();
+      if (task === "") return;
+
+      const li = document.createElement("li");
+      li.textContent = task;
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "Remove";
+      removeBtn.onclick = () => li.remove();
+
+      li.appendChild(removeBtn);
+      document.getElementById("todoList").appendChild(li);
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
